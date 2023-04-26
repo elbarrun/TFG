@@ -1,0 +1,133 @@
+.c__hero {
+    height: 30vh;
+    background-image: url(../img/hero2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+
+}
+.c__menu {
+    padding: 20px;
+    justify-content: space-around;
+    border-bottom: 2px solid #036399;
+
+}
+li{
+    font-size: 24px;
+    color: #036399;
+}
+.card-loyola {
+    width: 80%; /* ajusta el tamaño de la card-loyola según tus necesidades */
+    margin: 0 auto; /* centra la card-loyola horizontalmente */
+    height: 30%;
+    text-align: center; /* centra el contenido dentro de la card-loyola */
+    padding: 20px; /* ajusta el espacio interior de la card-loyola según tus necesidades */
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3); /* agrega una sombra a la card-loyola si lo deseas */
+}
+
+.card-loyola img {
+    width: 100%; /* ajusta el tamaño de la imagen según tus necesidades */
+    height: auto; /* ajusta la altura de la imagen proporcionalmente al ancho */
+    margin-bottom: 10px; /* ajusta el espacio entre la imagen y el párrafo según tus necesidades */
+}
+
+.card-loyola p {
+    font-size: 18px; /* ajusta el tamaño del párrafo según tus necesidades */
+}
+.img-map{
+    max-width: 50%;
+}
+
+.c__hero_tactica{
+    height: 30vh;
+    background-image: url(public/img/tactica.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .card-loyola {
+        width: 100%; /* ajusta el tamaño de la card en modo responsive */
+    }
+    .card-loyola p{
+        font-size: 16px;
+    }
+    .img-map{
+        max-width: 100%;
+    }
+}
+.btn {
+    border-radius: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 10px 30px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    color: #fff;
+}
+
+.btn-outline-secondary {
+    background-color: white !important;
+    color: #007bff;
+    border: 2px solid #007bff;
+}
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 10px rgba(0,0,0,0.2);
+}
+
+.c__login_gen{
+    background-image: url('../pages/Polideportivo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+}
+
+.cont-btns{
+    margin-top: 500px;
+}
+
+.c__login_coach{
+    background-image: url('../pages/coach.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.log_coach {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.btn-primary{
+    background-color: #036399 !important;
+}
+
+.our-text{
+    color: #036399 !important;
+}
+
+.our-bg{
+    background-color: #036399 !important;
+}
