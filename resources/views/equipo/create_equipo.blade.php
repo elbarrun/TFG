@@ -1,24 +1,32 @@
 @extends('layout.public')
-@section('content')
-    @yield('content')
-    <form method="POST" action="{{url('/equipos/create')}}" enctype="multipart/form-data">
-        @csrf
-        <div class="row  justify-content-center ">
-            <div class="form-floating d-flex mb-3 col-5">
-                <input type="text" name="title" class="form-control" id="floatingInput" placeholder="Título de la tarea">
-                <label for="floatingInput" class="ms-2">Título de la tarea</label>
-            </div>
-            <div class="form-floating d-flex col-5">
-                <textarea class="form-control" id="floatingTextarea" name="description" style="height: 300px"></textarea>
-                <label for="floatingTextarea" class="ms-3">Descripción de la tarea</label>
-            </div>
-            <div class="form-floating d-flex col-5">
-                <input class="form-control" type="file" id="formFile">
-            </div>
 
-            <div class="mt-3 col-8">
-                <button type="submit" class="btn btn-secondary mx-auto d-block col-2">Subir Tarea</button>
-            </div>
+@section('content')
+    <div class="container">
+        <div class="row">
+            <h1>Create Team</h1>
+            <form method="POST" action="{{url('/equipos')}}" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" name="titulo">
+                </div>
+                <div class="form-group">
+                    <label>Descripcion</label>
+                    <textarea class="form-control" name="descripcion" cols="3" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>file</label>
+                    <input type="file" class="form-control" name="file">
+                </div>
+                <div class="form-group">
+                    <label>user_id</label>
+                    <input type="file" class="form-control" name="user_id">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+
+            </form>
         </div>
-    </form>
+    </div>
 @endsection

@@ -5,16 +5,30 @@ namespace App\Http\Controllers;
 use App\Models\Equipo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class EquiposController extends Controller
 {
-    public function create(Request $request)
-    {;
-        //$this->authorize('create', Peticiones::class);
-        return view('equipo.create_equipos');
+    public function show()
+    {
+        $equipos = Equipo::all();
+        return view('equipo.show_equipo', ['equipos' => $equipos]);
+
     }
+    public function create()
+    {
+        return view('equipo.create_equipo');
+
+    }
+    /**
+     * Almacena una nueva táctica en la base de datos.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
+
         // Verificar si el usuario tiene permisos para crear tácticas
         //  }
         $this->authorize('create', Equipo::class);
@@ -34,7 +48,7 @@ class EquiposController extends Controller
         if ($request->hasFile('file')) {
             $imagen = $request->file('file');
             $nombreImagen = time() . '_' . $imagen->getClientOriginalName();
-            $rutaImagen = $imagen->storeAs('public/tacticas', $nombreImagen);
+            $rutaImagen = $imagen->storeAs('public/equipos', $nombreImagen);
             $equipo->imagen = $nombreImagen;
         }
         $user = Auth::user();
@@ -42,4 +56,26 @@ class EquiposController extends Controller
         $equipo->save();
     }
 
+    public function crear(Request $request)
+    {
+        // Validación de los datos del formulario
+        $validatedData = $request->validate([
+            'titulo' => 'required|max:255',
+            'descripcion' => 'required',
+            'imagen' => 'required|image',
+        ]);
+
+        // Procesamiento de la imagen subida
+        $imagePath = $request->file('imagen')->store('public/tacticas');
+        $imageUrl = Storage::url($imagePath);
+
+        // Creación de la nueva táctica
+        $equipo = new Equipo;
+        $equipo->titulo = $validatedData['titulo'];
+        $equipo->descripcion = $validatedData['descripcion'];
+        $equipo->imagen = $imageUrl;
+        $equipo->save();
+
+
+    }
 }
