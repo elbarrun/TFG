@@ -49,33 +49,57 @@ class EquiposController extends Controller
             $imagen = $request->file('file');
             $nombreImagen = time() . '_' . $imagen->getClientOriginalName();
             $rutaImagen = $imagen->storeAs('public/equipos', $nombreImagen);
-            $equipo->imagen = $nombreImagen;
+            $equipo->file = $nombreImagen;
         }
         $user = Auth::user();
         $equipo->user_id = $user->id;
         $equipo->save();
+        return redirect (route('equipos.show'));
+    }
+    public function edit(Equipo $equipo)
+    {
+        return view('equipo.edit_equipo', compact('equipo'));
     }
 
-    public function crear(Request $request)
+    public function update(Request $request, Equipo $equipo)
     {
-        // Validación de los datos del formulario
-        $validatedData = $request->validate([
-            'titulo' => 'required|max:255',
-            'descripcion' => 'required',
-            'imagen' => 'required|image',
+        // Verificar si el usuario tiene permisos para editar la táctica
+        $this->authorize('update', $equipo);
+
+        // Validar los datos del formulario
+        $this->validate($request, [
+            'titulo' => 'required|string|max:255',
+            'descripcion' => 'required|string|max:2000',
+            'file' => 'nullable|image', // Tamaño máximo de 10 MB
         ]);
 
-        // Procesamiento de la imagen subida
-        $imagePath = $request->file('imagen')->store('public/tacticas');
-        $imageUrl = Storage::url($imagePath);
+        // Actualizar la táctica
+        $equipo->titulo = $request->input('titulo');
+        $equipo->descripcion = $request->input('descripcion');
 
-        // Creación de la nueva táctica
-        $equipo = new Equipo;
-        $equipo->titulo = $validatedData['titulo'];
-        $equipo->descripcion = $validatedData['descripcion'];
-        $equipo->imagen = $imageUrl;
+        // Almacenar la imagen de la táctica, si se proporcionó
+        if ($request->hasFile('file')) {
+            $imagen = $request->file('file');
+            $nombreImagen = time() . '_' . $imagen->getClientOriginalName();
+            $rutaImagen = $imagen->storeAs('public/equipo', $nombreImagen);
+            $equipo->file = $nombreImagen;
+        }
+
         $equipo->save();
 
-
+        return redirect()->route('equipos.show', $equipo);
     }
+
+    public function destroy(Equipo $equipo)
+    {
+        // Verificar si el usuario tiene permisos para eliminar la táctica
+        $this->authorize('delete', $equipo);
+
+        // Eliminar la táctica
+        $equipo->delete();
+
+        return redirect (route('equipos.show'));
+    }
+
+
 }

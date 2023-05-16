@@ -9,7 +9,7 @@ class Tactica extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'titulo', 'descripcion', 'file'
+        'titulo', 'descripcion', 'file', 'user_id'
     ];
     public function equipo()
     {
@@ -17,12 +17,6 @@ class Tactica extends Model
     }
 
     public function user()
-
-
-
-
-
-
     {
         return $this->belongsTo(User::class);
     }

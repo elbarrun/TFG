@@ -9,7 +9,7 @@ class Noticia extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'titulo', 'descripcion', 'image'
+        'titulo', 'descripcion', 'file', 'user_id'
     ];
 
     public function user()

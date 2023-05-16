@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\EquiposController;
 use App\Http\Controllers\NoticiasController;
 use App\Http\Controllers\ProfileController;
@@ -17,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layout.public');
-});
+
 Route::get('/login', function () {
     return view('auth.login');
 });
@@ -30,7 +29,8 @@ Route::get('/login-coach', function () {
 
 Route::get('equipos', [EquiposController::class, 'show'])->name('equipos.show');
 
-Route::get('/', [NoticiasController::class, 'show'])->name('noticias.show_noticia');
+Route::get('/', [NoticiasController::class, 'show'])->name('noticias.show');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -42,6 +42,19 @@ Route::middleware('auth')->group(function () {
     Route::post('/equipos',[EquiposController::class, 'store'])->name('equipos.store');
     Route::get('/equipos/create',[EquiposController::class, 'create'])->name('equipos.create');
     Route::post('/', [NoticiasController::class, 'store'])->name('noticias.store');
-    Route::get('/noticias/create',[NoticiasController::class, 'create'])->middleware(['auth']);
+    Route::get('/noticias/create',[NoticiasController::class, 'create'])->name('noticia.create');
+
+    Route::get('/tacticas/{tactica}/edit', [TacticasController::class, 'edit'])->name('tacticas.edit');
+    Route::put('/tacticas/{tactica}', [TacticasController::class, 'update'])->name('tacticas.update');
+
+    Route::delete('/tacticas/{tactica}',[TacticasController::class, 'destroy'])->name('tacticas.destroy');
+
+    Route::get('/noticias/{noticia}/edit', [NoticiasController::class, 'edit'])->name('noticia.edit');
+    Route::put('/noticias/{noticia}', [NoticiasController::class, 'update'])->name('noticia.update');
+    Route::delete('/noticias/{noticia}',[NoticiasController::class, 'destroy'])->name('noticia.destroy');
+
+    Route::get('/equipos/{equipo}/edit', [EquiposController::class, 'edit'])->name('equipos.edit');
+    Route::put('/equipos/{equipo}', [EquiposController::class, 'update'])->name('equipos.update');
+    Route::delete('/equipos/{equipo}',[EquiposController ::class, 'destroy'])->name('equipos.destroy');
 });
 require __DIR__.'/auth.php';

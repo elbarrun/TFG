@@ -37,7 +37,8 @@ class TacticaPolicy
      */
     public function update(User $user, Tactica $tacticas): bool
     {
-        //
+        return true;
+
     }
 
     /**
@@ -45,7 +46,8 @@ class TacticaPolicy
      */
     public function delete(User $user, Tactica $tacticas): bool
     {
-        //
+        return true;
+
     }
 
     /**

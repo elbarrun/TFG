@@ -12,7 +12,7 @@
                 </div>
                 <div class="form-group">
                     <label>Descripcion</label>
-                    <textarea class="form-control" name="descrpicion" cols="3" rows="5"></textarea>
+                    <textarea class="form-control" name="descripcion" cols="3" rows="5"></textarea>
                 </div>
                 <div class="form-group">
                     <label>file</label>

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 use App\Models\Tactica;
+use App\Models\User;
 use App\Policies\TacticaPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -16,19 +17,15 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
+        Tactica::class => TacticaPolicy::class,
+    ];
 
-       'App\Models\Tactica' => 'App\Policies\TacticaPolicy',
-   ];
-
-
-
-    /**
-     * Register any authentication / authorization services.
-     */
-    public function boot(): void
+    public function boot()
     {
         $this->registerPolicies();
 
-        Gate::policy(Tactica::class, TacticaPolicy::class);
+        Gate::define('create_tacticas', function (User $user) {
+            return $user->tieneRol('admin');
+        });
     }
 }

@@ -14,13 +14,9 @@
                     <label>Descripcion</label>
                     <textarea class="form-control" name="descripcion" cols="3" rows="5"></textarea>
                 </div>
-                <div class="form-group">
+                <div class="form-group mt-3">
                     <label>file</label>
                     <input type="file" class="form-control" name="file">
-                </div>
-                <div class="form-group">
-                    <label>user_id</label>
-                    <input type="file" class="form-control" name="user_id">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Save</button>

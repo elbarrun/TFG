@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('rol')->default('1');
+            $table->integer('equipos_id')->unsigned();
+            $table->foreign('equipos_id')->references('id')->on('equipos');
             $table->rememberToken();
             $table->timestamps();
         });

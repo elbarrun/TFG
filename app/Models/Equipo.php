@@ -9,7 +9,7 @@ class Equipo extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'title', 'description', 'image'
+        'titulo', 'descripcion', 'file', 'user_id'
     ];
 
     public function tacticas()
@@ -19,6 +19,6 @@ class Equipo extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(User::class);
     }
 }
