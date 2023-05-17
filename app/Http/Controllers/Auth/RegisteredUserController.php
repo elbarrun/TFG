@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Equipo;
+use App\Models\Role;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -39,28 +40,34 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'team_id' => 'required', // Agrega esta regla de validación
+            'team_id' => 'required',
+            'role' => 'required|in:Jugador,Entrenador',
         ]);
 
         $teams = Equipo::find($request->team_id);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'equipos_id' => $request->team_id,
-        ]);
+        // Crear una instancia del modelo User y asignar los datos del formulario
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->equipos_id = $request->team_id;
+
+        // Guardar el usuario en la base de datos
 
 
-
-        //$user->equipo()->associate($teams);
-        // Asociar el usuario con el equip
-      //  event(new Registered($user));
-
-      //  Auth::login($user);
-
-        return redirect('/');
+        // Verificar el rol seleccionado y asignar el rol correspondiente al usuario
+        if ($request->input('role') == 'Entrenador') {
+            $rolEntrenador = Role::where('nombre', 'Entrenador')->first();
+            $user->roles()->attach($rolEntrenador);
+        } elseif ($request->input('role') == 'Jugador') {
+            $rolJugador = Role::where('nombre', 'Jugador')->first();
+            $user->roles()->attach($rolJugador);
+        }
+        $user->save();
+        return redirect('/login');
     }
+
 
     public function login(Request $request)
     {

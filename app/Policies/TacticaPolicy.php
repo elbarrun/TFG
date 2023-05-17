@@ -13,15 +13,17 @@ class TacticaPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        // Los jugadores y entrenadores pueden ver todas las tácticas
+        return $user->role === 'Jugador' || $user->role === 'Entrenador';
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Tactica $tacticas): bool
+    public function view(User $user, Tactica $tactica): bool
     {
-        //
+        // Los jugadores y entrenadores pueden ver la táctica
+        return $user->role === 'Jugador' || $user->role === 'Entrenador';
     }
 
     /**
@@ -29,40 +31,28 @@ class TacticaPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        // Solo los entrenadores pueden crear tácticas
+        return $user->role === 'Entrenador';
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Tactica $tacticas): bool
+    public function update(User $user, Tactica $tactica): bool
     {
-        return true;
-
+        // Solo los entrenadores pueden actualizar la táctica
+        return $user->role === 'Entrenador';
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Tactica $tacticas): bool
+    public function delete(User $user, Tactica $tactica): bool
     {
-        return true;
-
+        // Solo los entrenadores pueden eliminar la táctica
+        return $user->role === 'Entrenador';
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, Tactica $tacticas): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, Tactica $tacticas): bool
-    {
-        //
-    }
+    // Resto de métodos de la política
+    // ...
 }
