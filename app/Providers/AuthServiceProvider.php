@@ -31,10 +31,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('view-tactica', 'App\Policies\TacticaPolicy@view');
-        Gate::define('create-tactica', 'App\Policies\TacticaPolicy@create');
-        Gate::define('update-tactica', 'App\Policies\TacticaPolicy@update');
-        Gate::define('delete-tactica', 'App\Policies\TacticaPolicy@delete');
+        Gate::resource('tactica', TacticaPolicy::class);
 
         // Define las políticas para las noticias y otros modelos si es necesario
         // Gate::define('view-noticia', ...);

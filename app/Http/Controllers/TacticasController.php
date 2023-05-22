@@ -16,6 +16,21 @@ class TacticasController extends Controller
         return view('tactica.show_tactica', ['tacticas' => $tacticas]);
 
     }
+
+
+    public function index()
+    {
+        $entrenador = Auth::user(); // Obtener el usuario autenticado (entrenador)
+        $jugadores = $entrenador->equipo->jugadores; // Obtener los jugadores relacionados al equipo del entrenador
+
+        // Obtener las tácticas asociadas al entrenador y a los jugadores del mismo equipo
+        $tacticas = Tactica::where('entrenador_id', $entrenador->id)
+            ->whereIn('jugador_id', $jugadores->pluck('id'))
+            ->get();
+
+        return view('tactica.index_tactica', ['tacticas' => $tacticas]);
+    }
+
     public function create()
     {
         return view('tactica.create_tactica');
@@ -66,32 +81,40 @@ class TacticasController extends Controller
 
     public function update(Request $request, Tactica $tactica)
     {
-        // Verificar si el usuario tiene permisos para editar la táctica
-        $this->authorize('update', $tactica);
+        // Verificar si el usuario autenticado es un administrador
+        if (Auth::user()->hasRole('Admin')) {
+            // El administrador puede editar cualquier táctica
+            // Realizar la lógica de edición de la táctica aquí
+            // ...
 
-        // Validar los datos del formulario
-        $this->validate($request, [
-            'titulo' => 'required|string|max:255',
-            'descripcion' => 'required|string|max:2000',
-            'file' => 'nullable|image', // Tamaño máximo de 10 MB
-        ]);
+            // Validar los datos del formulario
+            $this->validate($request, [
+                'titulo' => 'required|string|max:255',
+                'descripcion' => 'required|string|max:2000',
+                'file' => 'nullable|image', // Tamaño máximo de 10 MB
+            ]);
 
-        // Actualizar la táctica
-        $tactica->titulo = $request->input('titulo');
-        $tactica->descripcion = $request->input('descripcion');
+            // Actualizar la táctica
+            $tactica->titulo = $request->input('titulo');
+            $tactica->descripcion = $request->input('descripcion');
 
-        // Almacenar la imagen de la táctica, si se proporcionó
-        if ($request->hasFile('file')) {
-            $imagen = $request->file('file');
-            $nombreImagen = time() . '_' . $imagen->getClientOriginalName();
-            $rutaImagen = $imagen->storeAs('public/tacticas', $nombreImagen);
-            $tactica->file = $nombreImagen;
+            // Almacenar la imagen de la táctica, si se proporcionó
+            if ($request->hasFile('file')) {
+                $imagen = $request->file('file');
+                $nombreImagen = time() . '_' . $imagen->getClientOriginalName();
+                $rutaImagen = $imagen->storeAs('public/tacticas', $nombreImagen);
+                $tactica->file = $nombreImagen;
+            }
+
+            $tactica->save();
+
+            return redirect()->route('tacticas.show', $tactica);
+        } else {
+            // El usuario no es un administrador, manejar el acceso no autorizado
+            return response('Acceso no autorizado', 403);
         }
-
-        $tactica->save();
-
-        return redirect()->route('tacticas.show', $tactica);
     }
+
 
     public function destroy(Tactica $tactica)
     {

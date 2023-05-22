@@ -31,8 +31,17 @@ class TacticaPolicy
      */
     public function create(User $user): bool
     {
-        // Solo los entrenadores pueden crear tácticas
-        return $user->role === 'Entrenador';
+        $roles = $user->roles; // Obtener los roles del usuario
+
+        foreach ($roles as $role) {
+            if ($role->nombre === 'Entrenador'|| $role->nombre === 'Admin') {
+                // El usuario tiene el rol de entrenador
+                return true;
+            }
+        }
+
+        // El usuario no tiene el rol de entrenador
+        return false;
     }
 
     /**
@@ -40,8 +49,18 @@ class TacticaPolicy
      */
     public function update(User $user, Tactica $tactica): bool
     {
-        // Solo los entrenadores pueden actualizar la táctica
-        return $user->role === 'Entrenador';
+        $roles = $user->roles; // Obtener los roles del usuario
+
+        foreach ($roles as $role) {
+            if ($role->nombre === 'Entrenador'|| $role->nombre === 'Admin') {
+                // El usuario tiene el rol de entrenador
+                return true;
+            }
+        }
+
+        // El usuario no tiene el rol de entrenador
+        return false;
+
     }
 
     /**
@@ -49,8 +68,20 @@ class TacticaPolicy
      */
     public function delete(User $user, Tactica $tactica): bool
     {
-        // Solo los entrenadores pueden eliminar la táctica
-        return $user->role === 'Entrenador';
+        // Verificar si el usuario tiene el rol de administrador
+        if ($user->hasRole('Admin')) {
+            // El administrador puede eliminar todas las tácticas
+            return true;
+        }
+
+        // Verificar si el usuario tiene el rol de entrenador
+        if ($user->hasRole('Entrenador')) {
+            // El entrenador puede eliminar solo sus propias tácticas
+            return $user->id === $tactica->user_id;
+        }
+
+        // Por defecto, los jugadores no tienen permiso para eliminar tácticas
+        return false;
     }
 
     // Resto de métodos de la política

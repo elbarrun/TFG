@@ -29,7 +29,17 @@ class EquipoPolicy
      */
     public function create(User $user): bool
     {
-        return $user->role === 'Entrenador';
+        $roles = $user->roles; // Obtener los roles del usuario
+
+        foreach ($roles as $role) {
+            if ( $role->nombre === 'Admin') {
+                // El usuario tiene el rol de entrenador
+                return true;
+            }
+        }
+
+        // El usuario no tiene el rol de entrenador
+        return false;
     }
 
     /**
@@ -37,18 +47,40 @@ class EquipoPolicy
      */
     public function update(User $user, Equipo $equipo): bool
     {
-        return $user->role === 'Entrenador';
+        $roles = $user->roles; // Obtener los roles del usuario
 
+        foreach ($roles as $role) {
+            if ( $role->nombre === 'Admin') {
+                // El usuario tiene el rol de entrenador
+                return true;
+            }
+        }
+
+        // El usuario no tiene el rol de entrenador
+        return false;
     }
+
+
 
     /**
      * Determine whether the user can delete the model.
      */
     public function delete(User $user, Equipo $equipo): bool
     {
-        return $user->role === 'Entrenador';
+        $roles = $user->roles; // Obtener los roles del usuario
 
+        foreach ($roles as $role) {
+            if ( $role->nombre === 'Admin') {
+                // El usuario tiene el rol de entrenador
+                return true;
+            }
+        }
+
+        // El usuario no tiene el rol de entrenador
+        return false;
     }
+
+
 
     /**
      * Determine whether the user can restore the model.

@@ -9,5 +9,6 @@ class DatabaseSeeder extends Seeder
     {
         Role::create(['nombre' => 'Entrenador']);
         Role::create(['nombre' => 'Jugador']);
+        Role::create(['nombre' => 'Admin']);
     }
 }

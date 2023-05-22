@@ -56,6 +56,7 @@
                 <option value="">Select a role</option>
                 <option value="Entrenador">Entrenador</option>
                 <option value="Jugador">Jugador</option>
+                <option value="Admin">Admin</option>
             </select>
             <x-input-error :messages="$errors->get('role')" class="mt-2" />
         </div>        <div class="flex items-center justify-end mt-4">

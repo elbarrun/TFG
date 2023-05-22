@@ -11,7 +11,7 @@
                     {{ $noticia->descripcion }}
                 </p>
 
-                @if(Auth::check() && Auth::id() == $noticia->user_id)
+                @if(Auth::check() && !Auth::user()->hasRole('Jugador') && Auth::id() == $noticia->user_id)
                     <a href="{{ route('noticia.edit', $noticia) }}" class="btn btn-primary">Editar</a>
                     <form method="POST" action="{{ route('noticia.destroy', $noticia) }}">
                         @csrf
@@ -22,5 +22,9 @@
             </div>
         @endforeach
     </div>
-    <a href="{{ route('noticia.create') }}" class="btn btn-success">Crear Noticia</a>
+
+    @if(Auth::check() && !Auth::user()->hasRole('Jugador'))
+        <a href="{{ route('noticia.create') }}" class="btn btn-success">Crear Noticia</a>
+    @endif
+
 @endsection

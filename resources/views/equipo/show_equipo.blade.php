@@ -12,7 +12,7 @@
                         <img src="{{ asset('storage/equipos/' . $team->file) }}" class="card-img-top img-fluid mw-100" alt="Descripción de la imagen">
                         <div class="card-body">
                             <p class="card-text">{{ $team->descripcion }}</p>
-                            @if(Auth::check() && Auth::id() == $team->user_id)
+                            @if(Auth::check() && Auth::user()->hasRole('Admin'))
                                 <a href="{{ route('tacticas.edit', $team) }}" class="btn btn-primary">Editar</a>
                                 <form method="POST" action="{{ route('tacticas.destroy', $team) }}" style="display: inline-block">
                                     @csrf
@@ -27,6 +27,8 @@
         </div>
     </div>
 
-    <a href="{{ route('equipos.create') }}" class="btn btn-success">Crear equipo</a>
+    @if(Auth::check() && Auth::user()->hasRole('Admin'))
+        <a href="{{ route('equipos.create') }}" class="btn btn-success">Crear equipo</a>
+    @endif
 
 @endsection

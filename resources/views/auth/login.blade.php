@@ -10,7 +10,7 @@
                         <h3 class="text-white mb-3">¿Cómo desea acceder?</h3>
 
                         <a href="{{url('login-coach')}}" class="btn btn-primary btn-lg col-lg-5 col-12 gap">Soy entrenador</a>
-                        <a href="login-player.html" class="btn btn-outline-secondary text-primary btn-lg col-lg-5 col-12">Soy jugador</a>
+                        <a href="{{url('login-player')}}" class="btn btn-outline-secondary text-primary btn-lg col-lg-5 col-12">Soy jugador</a>
                     </div>
                 </div>
             </div>

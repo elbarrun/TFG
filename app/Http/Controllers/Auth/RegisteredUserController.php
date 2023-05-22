@@ -41,7 +41,7 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'team_id' => 'required',
-            'role' => 'required|in:Jugador,Entrenador',
+            'role' => 'required|in:Jugador,Entrenador,Admin',
         ]);
 
         $teams = Equipo::find($request->team_id);
@@ -53,8 +53,9 @@ class RegisteredUserController extends Controller
         $user->password = bcrypt($request->input('password'));
         $user->equipos_id = $request->team_id;
 
-        // Guardar el usuario en la base de datos
 
+        // Guardar el usuario en la base de datos
+        $user->save();
 
         // Verificar el rol seleccionado y asignar el rol correspondiente al usuario
         if ($request->input('role') == 'Entrenador') {
@@ -63,8 +64,12 @@ class RegisteredUserController extends Controller
         } elseif ($request->input('role') == 'Jugador') {
             $rolJugador = Role::where('nombre', 'Jugador')->first();
             $user->roles()->attach($rolJugador);
+        } elseif ($request->input('role') == 'Admin') {
+            $rolAdmin = Role::where('nombre', 'Admin')->first();
+            $user->roles()->attach($rolAdmin);
         }
-        $user->save();
+
+
         return redirect('/login');
     }
 

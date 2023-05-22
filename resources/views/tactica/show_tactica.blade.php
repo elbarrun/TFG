@@ -12,13 +12,15 @@
                         <img src="{{ asset('storage/tacticas/' . $tactic->file) }}" class="card-img-top img-fluid mw-100" alt="Descripción de la imagen">
                         <div class="card-body">
                             <p class="card-text">{{ $tactic->descripcion }}</p>
-                            @if(Auth::check() && Auth::id() == $tactic->user_id)
-                                <a href="{{ route('tacticas.edit', $tactic) }}" class="btn btn-primary">Editar</a>
-                                <form method="POST" action="{{ route('tacticas.destroy', $tactic) }}" style="display: inline-block">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                                </form>
+                            @if(Auth::check() && Auth::user()->hasRole('Jugador'))
+                                @if(Auth::id() == $tactic->user_id)
+                                    <a href="{{ route('tacticas.edit', $tactic) }}" class="btn btn-primary">Editar</a>
+                                    <form method="POST" action="{{ route('tacticas.destroy', $tactic) }}" style="display: inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </form>
+                                @endif
                             @endif
                         </div>
                     </div>
@@ -27,6 +29,7 @@
         </div>
     </div>
 
-    <a href="{{ route('tacticas.create') }}" class="btn btn-success">Crear Táctica</a>
-
+    @if(Auth::check() && !Auth::user()->hasRole('Jugador'))
+        <a href="{{ route('tacticas.create') }}" class="btn btn-success">Crear Táctica</a>
+    @endif
 @endsection

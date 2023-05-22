@@ -31,7 +31,17 @@ class NoticiaPolicy
      */
     public function create(User $user): bool
     {
-        return $user->role === 'Entrenador';
+        $roles = $user->roles; // Obtener los roles del usuario
+
+        foreach ($roles as $role) {
+            if ($role->nombre === 'Entrenador'|| $role->nombre === 'Admin') {
+                // El usuario tiene el rol de entrenador
+                return true;
+            }
+        }
+
+        // El usuario no tiene el rol de entrenador
+        return false;
     }
 
     /**
@@ -39,7 +49,17 @@ class NoticiaPolicy
      */
     public function update(User $user, Noticia $noticia): bool
     {
-        return $user->role === 'Entrenador';
+        $roles = $user->roles; // Obtener los roles del usuario
+
+        foreach ($roles as $role) {
+            if ($role->nombre === 'Entrenador'|| $role->nombre === 'Admin') {
+                // El usuario tiene el rol de entrenador
+                return true;
+            }
+        }
+
+        // El usuario no tiene el rol de entrenador
+        return false;
     }
 
     /**
@@ -47,7 +67,17 @@ class NoticiaPolicy
      */
     public function delete(User $user, Noticia $noticia): bool
     {
-        return $user->role === 'Entrenador';
+        $roles = $user->roles; // Obtener los roles del usuario
+
+        foreach ($roles as $role) {
+            if ($role->nombre === 'Entrenador'|| $role->nombre === 'Admin') {
+                // El usuario tiene el rol de entrenador
+                return true;
+            }
+        }
+
+        // El usuario no tiene el rol de entrenador
+        return false;
     }
 
     /**
