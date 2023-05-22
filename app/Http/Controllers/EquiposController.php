@@ -81,7 +81,7 @@ class EquiposController extends Controller
         if ($request->hasFile('file')) {
             $imagen = $request->file('file');
             $nombreImagen = time() . '_' . $imagen->getClientOriginalName();
-            $rutaImagen = $imagen->storeAs('public/equipo', $nombreImagen);
+            $rutaImagen = $imagen->storeAs('public/equipos', $nombreImagen);
             $equipo->file = $nombreImagen;
         }
 

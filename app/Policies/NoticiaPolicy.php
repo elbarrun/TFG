@@ -5,9 +5,16 @@ namespace App\Policies;
 use App\Models\Noticia;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Auth;
 
 class NoticiaPolicy
 {
+    public function before(){
+        if(Auth::user()->hasRole('Admin')){
+            return true;
+        }
+    }
+
     /**
      * Determine whether the user can view any models.
      */

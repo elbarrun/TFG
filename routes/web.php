@@ -29,6 +29,9 @@ Route::get('/login-coach', function () {
 Route::get('/login-player', function () {
     return view('auth.login_player');
 });
+Route::get('/contacto', function () {
+    return view('layout.contacto');
+});
 
 
 Route::get('equipos', [EquiposController::class, 'show'])->name('equipos.show');

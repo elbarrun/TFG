@@ -12,15 +12,13 @@
                         <img src="{{ asset('storage/tacticas/' . $tactic->file) }}" class="card-img-top img-fluid mw-100" alt="Descripción de la imagen">
                         <div class="card-body">
                             <p class="card-text">{{ $tactic->descripcion }}</p>
-                            @if(Auth::check() && Auth::user()->hasRole('Jugador'))
-                                @if(Auth::id() == $tactic->user_id)
-                                    <a href="{{ route('tacticas.edit', $tactic) }}" class="btn btn-primary">Editar</a>
-                                    <form method="POST" action="{{ route('tacticas.destroy', $tactic) }}" style="display: inline-block">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Eliminar</button>
-                                    </form>
-                                @endif
+                            @if(Auth::check() && (Auth::user()->hasRole('Admin') || (Auth::user()->hasRole('Entrenador') && Auth::id() == $tactic->user_id)) )
+                                <a href="{{ route('tacticas.edit', $tactic) }}" class="btn btn-primary">Editar</a>
+                                <form method="POST" action="{{ route('tacticas.destroy', $tactic) }}" style="display: inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                </form>
                             @endif
                         </div>
                     </div>

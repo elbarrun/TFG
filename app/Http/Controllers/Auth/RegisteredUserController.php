@@ -70,7 +70,7 @@ class RegisteredUserController extends Controller
         }
 
 
-        return redirect('/login');
+        return redirect(route('noticias.show'));
     }
 
 
@@ -89,6 +89,7 @@ class RegisteredUserController extends Controller
         } else {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
+        return redirect('/');
     }
 
 }

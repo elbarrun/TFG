@@ -12,6 +12,8 @@
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
         crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 
 
 
@@ -22,9 +24,12 @@
 </div>
 <div class="c__menu">
     <nav class="navbar navbar-expand-lg w-100">
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav flex-row justify-content-around w-100">
-                <li class="nav-item active">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 justify-content-around">
+                <li class="nav-item">
                     <a class="nav-link our-text" href="{{url('/')}}">Inicio</a>
                 </li>
                 <li class="nav-item">
@@ -34,7 +39,7 @@
                     <a class="nav-link our-text" href={{url('equipos')}}>Equipos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link our-text" href="#">Contacto</a>
+                    <a class="nav-link our-text" href={{url('contacto')}}>Contacto</a>
                 </li>
                 <?php if(Auth::check()): ?>
                 <li class="nav-item justify-content-end">
@@ -54,39 +59,60 @@
                 </li>
                 <?php endif;?>
             </ul>
+
         </div>
     </nav>
 </div>
 
+
+
 @yield('content')
 
-<div class="c__footer mt-5 our-bg text-white">
+<!-- Footer -->
+<footer class="footer mt-5 our-bg text-white py-5">
     <div class="container">
         <div class="row">
-            <div
-                class="col-md-4 col-sm-12 d-flex justify-content-center align-items-center"
-            >
-                <div>
-                    <h1>Redes sociales</h1>
-                    <p>facebook</p>
-                    <p>instagram</p>
-                    <p>twitter</p>
-                </div>
+            <!-- Columna 1 -->
+            <div class="col-md-4">
+                <h5>Nuestro Club</h5>
+                <p>Desde la iniciación al baloncesto para niños y niñas de 1o de Primaria, hasta el
+                    baloncesto en pista grande, pasando por la modalidad intermedia del minibasket, se
+                    ofrece una actividad deportiva de gran arraigo en nuestro colegio. Se participa en los
+                    Juegos Deportivos de La Rioja o liga federada a través de la A.D. Loyola, jornadas de
+                    tecnificación y diversos torneos o actividades competitivas durante el año.</p>
             </div>
-            <div class="col-md-8 col-sm-12 d-flex justify-content-center">
-                <div class="text-center">
-                    <h3>telefono:6666666</h3>
-                    <img src="{{asset('img/map2.jpg')}}" class="img-map" alt="" />
-                    <p>
-                        C/Duques de Nájera Nº19 <br/>
-                        26002 <br/>
-                        Logroño, La Rioja
-                    </p>
-                </div>
+            <!-- Columna 2 -->
+            <div class="col-md-4">
+                <h5>Contacto</h5>
+                <p>Dirección: C/Duques de Nájera Nº19, 26002 Logroño, La Rioja</p>
+                <p>Teléfono: 656885285</p>
+                <p>Email: dam10.2022.jesuitas@gmail.com</p>
+            </div>
+            <!-- Columna 3 -->
+            <div class="col-md-4">
+                <h5>Redes Sociales</h5>
+                <p>Síguenos en nuestras redes sociales para estar al día de nuestras últimas noticias y eventos.</p>
+                <a href="{{url('https://www.facebook.com/ADLOYOLA/?locale=es_ES')}}" class="text-white me-4">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="{{url('https://twitter.com/adloyola1?lang=es')}}" class="text-white me-4">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="{{url('https://www.instagram.com/ad_loyola/?hl=es')}}" class="text-white me-4">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="text-white">
+                    <i class="fab fa-linkedin"></i>
+                </a>
             </div>
         </div>
     </div>
-</div>
+    <div class="text-center py-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <p class="mb-0">© 2023 Equipo de Baloncesto. Todos los derechos reservados.</p>
+    </div>
+</footer>
+<!-- Fin de Footer -->
+
 </body>
 
 

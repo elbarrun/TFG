@@ -11,8 +11,8 @@
                     {{ $noticia->descripcion }}
                 </p>
 
-                @if(Auth::check() && !Auth::user()->hasRole('Jugador') && Auth::id() == $noticia->user_id)
-                    <a href="{{ route('noticia.edit', $noticia) }}" class="btn btn-primary">Editar</a>
+                @if(Auth::check() && (Auth::user()->hasRole('Admin')||(Auth::user()->hasRole('Entrenador') && Auth::id()== $noticia->user_id)) )
+                    <a href="{{ route('noticia.edit', $noticia) }}" class="btn btn-primary mb-2">Editar</a>
                     <form method="POST" action="{{ route('noticia.destroy', $noticia) }}">
                         @csrf
                         @method('DELETE')

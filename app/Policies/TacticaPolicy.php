@@ -5,12 +5,16 @@ namespace App\Policies;
 use App\Models\Tactica;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Auth;
 
 class TacticaPolicy
 {
-    /**
-     * Determine whether the user can view any models.
-     */
+
+    public function before(){
+        if(Auth::user()->hasRole('Admin')){
+            return true;
+        }
+    }
     public function viewAny(User $user): bool
     {
         // Los jugadores y entrenadores pueden ver todas las tácticas
