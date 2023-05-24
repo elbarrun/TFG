@@ -1,72 +1,61 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+
+@extends('layout.public')
+@section('content')
+    <form method="POST" class="justify-content-center" action="{{url('register')}}" enctype="multipart/form-data">
         @csrf
+        <p class="h1 mt-5 mb-4 text-center">Registro</p>
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+
+        <div class="row w-100 justify-content-center ms-1 mb-3">
+            <div class="col-lg-3 col-md-6">
+                <input type="text" name="name" class="form-control" id="inputName3" placeholder="Nombre">
+            </div>
         </div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <div class="row w-100  justify-content-center mb-3 ms-1">
+            <div class="col-lg-3 col-md-6">
+                <input type="email" name="email" class="form-control " id="inputName3" placeholder="Introduzca email">
+            </div>
+        </div>
+        <div class="row w-100 justify-content-center mb-3 ms-1">
+            <div class="col-lg-3 col-md-6">
+                <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Introduzca contraseña">
+            </div>
+        </div>
+        <div class="row w-100 justify-content-center mb-3 ms-1">
+            <div class="col-lg-3 col-md-6">
+                <input type="password" name="password_confirmation" class="form-control" id="inputName3" placeholder="Repita contraseña">
+            </div>
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div class="row w-100 justify-content-center mb-3 ms-1">
+            <div class="col-lg-3 col-md-6">
+                <select id="team" class="form-select" name="team_id" required>
+                    <option value="">Selecciona el equipo</option>
+                    @foreach ($equipos as $equipo)
+                        <option value="{{ $equipo->id }}">{{ $equipo->titulo }}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+        <div class="row w-100 justify-content-center mb-3 ms-1">
+            <div class="col-lg-3 col-md-6">
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-        <!-- Team -->
-        <div class="mt-4">
-            <x-input-label for="team" :value="__('Team')" />
-            <select id="team" class="block mt-1 w-full" name="team_id" required>
-                <option value="">Select a team</option>
-                @foreach ($equipos as $equipo)
-                    <option value="{{ $equipo->id }}">{{ $equipo->titulo }}</option>
-                @endforeach
-            </select>
-            <x-input-error :messages="$errors->get('team_id')" class="mt-2" />
+                <select id="role" class="form-select" name="role" required>
+                    <option value="">Selecciona el rol</option>
+                    <option value="Entrenador">Entrenador</option>
+                    <option value="Jugador">Jugador</option>
+                    <option value="Admin">Admin</option>
+                </select>
+            </div>
         </div>
         <!-- Role -->
-        <div class="mt-4">
-            <x-input-label for="role" :value="__('Role')" />
-            <select id="role" class="block mt-1 w-full" name="role" required>
-                <option value="">Select a role</option>
-                <option value="Entrenador">Entrenador</option>
-                <option value="Jugador">Jugador</option>
-                <option value="Admin">Admin</option>
-            </select>
-            <x-input-error :messages="$errors->get('role')" class="mt-2" />
-        </div>        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ml-4">
-                {{ __('Register') }}
-            </x-primary-button>
+        <div class="row justify-content-center mt-4 mb-3">
+            <div class="col-1">
+                <button type="submit" class="btn btn-primary" href="{{url('login')}}">Registrarme</button>
+            </div>
+        </div>
         </div>
     </form>
-</x-guest-layout>
+@endsection

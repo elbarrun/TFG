@@ -13,7 +13,7 @@
                         <div class="card-body">
                             <p class="card-text">{{ $team->descripcion }}</p>
                             @if(Auth::check() && Auth::user()->hasRole('Admin'))
-                                <a href="{{ route('tacticas.edit', $team) }}" class="btn btn-primary mb-2">Editar</a>
+                                <a href="{{ route('equipos.edit', $team) }}" class="btn btn-primary mb-2">Editar</a>
                                 <form method="POST" action="{{ route('tacticas.destroy', $team) }}" style="display: inline-block">
                                     @csrf
                                     @method('DELETE')

@@ -12,6 +12,7 @@
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
         crossorigin="anonymous"
     />
+    <link rel="icon" type="image/x-icon" href="{{asset('storage/favicon.ico')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 
@@ -106,6 +107,7 @@
                 </a>
             </div>
         </div>
+        <a href="{{url('/register')}}">Admin</a>
     </div>
     <div class="text-center py-3" style="background-color: rgba(0, 0, 0, 0.2);">
         <p class="mb-0">© 2023 Equipo de Baloncesto. Todos los derechos reservados.</p>

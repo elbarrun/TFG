@@ -70,8 +70,7 @@ class RegisteredUserController extends Controller
         }
 
 
-        return redirect(route('noticias.show'));
-    }
+        return redirect(route('noticias.show'));    }
 
 
     public function login(Request $request)

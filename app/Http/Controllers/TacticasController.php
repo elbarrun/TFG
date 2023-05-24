@@ -82,8 +82,7 @@ class TacticasController extends Controller
     public function update(Request $request, Tactica $tactica)
     {
         // Verificar si el usuario autenticado es un administrador
-        if (Auth::user()->hasRole('Admin')) {
-            // El administrador puede editar cualquier táctica
+        $this->authorize('update', $tactica);            // El administrador puede editar cualquier táctica
             // Realizar la lógica de edición de la táctica aquí
             // ...
 
@@ -109,10 +108,7 @@ class TacticasController extends Controller
             $tactica->save();
 
             return redirect()->route('tacticas.show', $tactica);
-        } else {
-            // El usuario no es un administrador, manejar el acceso no autorizado
-            return response('Acceso no autorizado', 403);
-        }
+
     }
 
 

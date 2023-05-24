@@ -7,7 +7,7 @@
                 <div class="row justify-content-center align-items-center">
                     <div class="col-12 text-center mb-4">
                         <h3 class="text-uppercase">¡Bienvenido coach! </h3>
-                        <img src={{asset('img/logo.jpg')}} alt="Logo">
+
                     </div>
                     <div class="col-md-12 col-lg-6 mb-3">
                         <input type="email" class="form-control" name="email" placeholder="Usuario">
