@@ -3,18 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Equipo;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class EquiposController extends Controller
 {
-    public function show()
+    public function show(Equipo $equipo)
     {
-        $equipos = Equipo::all();
-        return view('equipo.show_equipo', ['equipos' => $equipos]);
+        $equipo = Equipo::all();
+        return view('equipo.show_equipo', ['equipos' => $equipo]);
+
 
     }
+
     public function create()
     {
         return view('equipo.create_equipo');
@@ -51,6 +54,7 @@ class EquiposController extends Controller
             $rutaImagen = $imagen->storeAs('public/equipos', $nombreImagen);
             $equipo->file = $nombreImagen;
         }
+
         $user = Auth::user();
         $equipo->user_id = $user->id;
         $equipo->save();

@@ -33,10 +33,14 @@ Route::get('/contacto', function () {
     return view('layout.contacto');
 });
 
+Route::get('/', function () {
+    return view('layout.public');
+});
 
-Route::get('equipos', [EquiposController::class, 'show'])->name('equipos.show');
 
-Route::get('/', [NoticiasController::class, 'show'])->name('noticias.show');
+Route::get('/equipos', [EquiposController::class, 'show'])->name('equipos.show');
+
+Route::get('/noticias', [NoticiasController::class, 'show'])->name('noticias.show');
 
 
 Route::middleware('auth')->group(function () {

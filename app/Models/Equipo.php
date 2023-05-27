@@ -21,4 +21,14 @@ class Equipo extends Model
     {
         return $this->hasMany(User::class);
     }
+    public function jugadores()
+    {
+        return $this->hasMany(Jugador::class);
+    }
+
+    public function entrenadores()
+    {
+        return $this->hasMany(Entrenador::class);
+    }
+
 }

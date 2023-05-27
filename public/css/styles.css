@@ -25,18 +25,46 @@ li{
     color: #036399;
 }
 .card-loyola {
-    width: 80%; /* ajusta el tamaño de la card-loyola según tus necesidades */
-    margin: 0 auto; /* centra la card-loyola horizontalmente */
-    height: 30%;
-    text-align: center; /* centra el contenido dentro de la card-loyola */
-    padding: 20px; /* ajusta el espacio interior de la card-loyola según tus necesidades */
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3); /* agrega una sombra a la card-loyola si lo deseas */
+    width: 55%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
 }
 
+.card-loyola .img-container {
+    width: 50%;
+    height: 0;
+    padding-bottom: 75%; /* Este valor controla la relación de aspecto de las imágenes. Puedes ajustarlo según tus necesidades */
+    position: relative;
+}
+.card-tactica {
+    width: 80%; /* Ajusta el ancho de la card */
+    margin: 0 auto; /* Centra la card horizontalmente */
+ /* Añade un borde de 2px */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5); /* Añade una sombra para darle profundidad */
+    border-radius: 10px; /* Añade bordes redondeados a la card */
+}
+.card-tactica .card-body {
+    padding: 20px; /* Añade espacio alrededor del contenido de la card */
+}
+
+.card-tactica .btn {
+    margin: 10px 0; /* Añade un margen vertical a los botones */
+}
+
+.card-tactica .card-text {
+    margin-bottom: 20px; /* Añade un margen inferior al texto de la card */
+}
 .card-loyola img {
-    width: 100%; /* ajusta el tamaño de la imagen según tus necesidades */
-    height: auto; /* ajusta la altura de la imagen proporcionalmente al ancho */
-    margin-bottom: 10px; /* ajusta el espacio entre la imagen y el párrafo según tus necesidades */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Esto asegura que la imagen se ajuste a su contenedor sin distorsionarse */
+    margin-bottom: 30px;
 }
 
 .card-loyola p {
@@ -60,16 +88,27 @@ li{
     text-align: center;
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 600px) {
     .card-loyola {
-        width: 100%; /* ajusta el tamaño de la card en modo responsive */
+        width: 90%;
     }
-    .card-loyola p{
-        font-size: 16px;
-    }
-    .img-map{
-        max-width: 100%;
-    }
+}
+
+.card-loyola .img-container {
+    width: 100%;
+    height: 0;
+    padding-bottom: 75%;
+    position: relative;
+}
+
+.card-loyola img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-bottom: 30px;
 }
 .btn {
     border-radius: 50px;
@@ -121,7 +160,10 @@ li{
     max-width: 500px;
     margin: 0 auto;
 }
-
+.btn-primary-lan{
+    background-color: #036399 !important;
+    width: 100%;
+}
 .btn-primary{
     background-color: #036399 !important;
 }
@@ -133,3 +175,166 @@ li{
 .our-bg{
     background-color: #036399 !important;
 }
+
+#imageRow {
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+.col-4 {
+    scroll-snap-align: start;
+}
+.patrocinio{
+    text-decoration: underline;
+}
+
+
+.gray-texts-section {
+    background-color: #40a8c7;
+    padding: 16px 0;
+}
+
+.gray-texts-section--mt-85 {
+    margin-top: -85px !important;
+}
+
+
+.carta-team h2 {
+    margin-top: 24px;
+    margin-bottom: 8px;
+    color: black !important;
+}
+
+.carta-team p {
+    margin: 32px 0 32px 0;
+}
+
+@media (max-width: 768px) {
+    .carta-team h2 {
+        margin-top: 24px;
+        margin-bottom: 8px;
+    }
+
+    .carta-team p {
+        margin-top: 8px;
+    }
+
+    .carta-team button {
+        min-width: 100% !important;
+    }
+}
+
+
+
+.gray-texts-section .title {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 42px;
+    letter-spacing: -0.04em;
+}
+
+.gray-texts-section .subtitle {
+    font-size: 18px;
+    line-height: 29px;
+}
+
+.gray-texts-section .texts-container {
+    padding: 56px 80px 65px;
+}
+
+@media (max-width: 768px) {
+    .gray-texts-section .texts-container {
+        padding: 24px 0 65px;
+    }
+}
+
+.gray-texts-section .texts-container .text-block {
+    height: min-content;
+    background-color: #036399/* reemplazar con el valor de $color-white */;
+    padding: 40px;
+}
+
+.gray-texts-section .texts-container .text-block .title {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+@media (max-width: 768px /* reemplazar con el valor de md en px */) {
+    .gray-texts-section .texts-container .text-block .title {
+        font-size: 24px;
+        line-height: 29px;
+    }
+}
+
+.gray-texts-section .texts-container .text-block .fact {
+    font-weight: 800;
+    font-size: 50px;
+    line-height: 40px;
+}
+
+@media (max-width: 768px/* reemplazar con el valor de md en px */) {
+    .gray-texts-section .texts-container .text-block .fact {
+        font-size: 32px;
+        line-height: 29px;
+    }
+}
+
+.gray-texts-section .texts-container .text-block .text {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+@media (max-width: 768px /* reemplazar con el valor de md en px */) {
+    .gray-texts-section .texts-container .text-block .text {
+        font-size: 16px;
+        line-height: 25px;
+        letter-spacing: -0.01rem;
+    }
+}
+
+.gray-texts-section--4 {
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+}
+
+@media (max-width: 768px /* reemplazar con el valor de md en px */) {
+    .gray-texts-section--4 {
+        display: block;
+    }
+}
+
+.gray-texts-section--4 .texts-container {
+    padding: 56px 0;
+}
+
+.card-equipo {
+    width: 100%; /* Ajusta el ancho de la card */
+    margin: 0 auto; /* Centra la card horizontalmente */
+    /* Añade un borde de 2px */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5); /* Añade una sombra para darle profundidad */
+    border-radius: 10px; /* Añade bordes redondeados a la card */
+    max-width: 100%;
+}
+
+.img-container {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* para una relación de aspecto 16:9 */
+    position: relative;
+}
+
+.img-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+

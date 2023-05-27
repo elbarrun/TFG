@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row d-flex-align-items-center">
                 <div class="col-md-6 col-12 order-2 order-md-1">
-                    <img src="{{asset('img/map2.jpg')}}"alt="Ubicación del polideportivo" class="img-fluid h-100 w-100">
+                    <img src="{{asset('img/map2.jpg')}}" alt="Ubicación del polideportivo" class="img-fluid h-100 w-100">
                 </div>
                 <div class="col-md-6 col-12 order-1 order-md-2">
                     <div class="contacto__datos">
