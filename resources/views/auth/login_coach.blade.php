@@ -30,6 +30,7 @@
                 <div class="row justify-content-center align-items-center">
                     <div class="col-12 text-center mb-4">
                         <h3 class="text-uppercase">¡Bienvenido coach! </h3>
+                        <h4 class="my-3">Forma y se feliz...</h4>
 
                     </div>
                     <div class="col-md-12 col-lg-6 mb-3">

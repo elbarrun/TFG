@@ -134,7 +134,7 @@ li{
 }
 
 .c__login_gen{
-    background-image: url('../pages/Polideportivo.jpg');
+
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -146,7 +146,7 @@ li{
 }
 
 .c__login_coach{
-    background-image: url('../pages/coach.jpg');
+    background-image: url('../img/Polideportivo.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;

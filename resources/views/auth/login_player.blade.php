@@ -74,6 +74,7 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-12 text-center mb-4">
                     <h3 class="text-uppercase">¡Bienvenido Jugador! </h3>
+                    <h4 class="my-3">Aprende, disfruta y respeta.</h4>
 
                 </div>
                 <div class="col-md-12 col-lg-6 mb-3">

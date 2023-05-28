@@ -38,9 +38,9 @@
                             <img src="{{ asset('storage/equipos/' . $equipo->file) }}" class="img-fluid w-100" alt="card-horizontal-image">
                         </div>
                         <div class="col-12 col-lg-4">
-                            <div class="card-body">
-                                <h5 class="card-title text-center text-uppercase ms-5">{{ $equipo->titulo }}</h5>
-                                <p class="card-text ms-5">{{ $equipo->descripcion }}</p>
+                            <div class="card-body mb-3">
+                                <h5 class="card-title my-3 text-center text-uppercase ms-5">{{ $equipo->titulo }}</h5>
+                                <p class="card-text ms-5">{{ $equipo->descripcion }} </p>
                                 @if(Auth::check() && Auth::user()->hasRole('Admin'))
                                     <div class="mb-3 ms-3">
                                         <a href="{{ route('equipos.edit', $equipo) }}" class="btn btn-primary">Editar</a>

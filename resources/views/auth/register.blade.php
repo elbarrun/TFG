@@ -29,23 +29,23 @@
 
         <div class="row w-100 justify-content-center ms-1 mb-3">
             <div class="col-lg-3 col-md-6">
-                <input type="text" name="name" class="form-control" id="passwordField" placeholder="Nombre">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Nombre">
             </div>
         </div>
 
         <div class="row w-100  justify-content-center mb-3 ms-1">
             <div class="col-lg-3 col-md-6">
-                <input type="email" name="email" class="form-control " id="passwordField" placeholder="Introduzca email">
+                <input type="email" name="email" class="form-control " id="" placeholder="Introduzca email">
             </div>
         </div>
         <div class="row w-100 justify-content-center mb-3 ms-1">
             <div class="col-lg-3 col-md-6">
-                <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Introduzca contraseña">
+                <input type="password" name="password" class="form-control" id="passwordField" placeholder="Introduzca contraseña">
             </div>
         </div>
         <div class="row w-100 justify-content-center mb-3 ms-1">
             <div class="col-lg-3 col-md-6">
-                <input type="password" name="password_confirmation" class="form-control" id="inputName3" placeholder="Repita contraseña">
+                <input type="password" name="password_confirmation" class="form-control" id="confirmPasswordField" placeholder="Repita contraseña">
             </div>
         </div>
 
@@ -80,3 +80,4 @@
         </div>
     </form>
 </body></html>
+

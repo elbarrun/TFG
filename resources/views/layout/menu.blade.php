@@ -13,10 +13,11 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 
-
-
 </head>
 <body>
+
+
+
 <div class="c__menu">
     <nav class="navbar navbar-expand-lg w-100">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,6 +64,7 @@
         </div>
     </nav>
 </div>
+
 </body>
 </html>
 
@@ -75,3 +77,4 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>

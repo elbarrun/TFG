@@ -36,7 +36,7 @@ class NoticiasController extends Controller
         // Validar los datos del formulario
         $validator = Validator::make($request->all(), [
             'titulo' => 'required|string|max:255',
-            'descripcion' => 'required|string|max:2000',
+            'descripcion' => 'required|string|max:1000000',
             'file' => 'nullable|image', // Tamaño máximo de 10 MB
         ]);
 
