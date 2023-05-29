@@ -57,6 +57,11 @@ li{
 .card-tactica .card-text {
     margin-bottom: 20px; /* Añade un margen inferior al texto de la card */
 }
+.card-tactica .card-img-top {
+     object-fit: cover; /* Ajusta y recorta la imagen dentro de la tarjeta */
+max-height: 100%; /* Establece una altura fija para todas las imágenes */
+ }
+
 .card-loyola img {
     position: absolute;
     top: 0;
