@@ -9,7 +9,7 @@
                     <img src="{{asset('img/equipo.jpg')}}" class="img-fluid w-100 mt-md-2" alt="card-horizontal-image">
                 </div>
                 <div class="col-12 col-sm-4 mt-md-5">
-                    <p class="card-text">Nombreeeee Jugador</p>
+                    <p class="card-text">Nombree Jugador</p>
                     <p class="card-text">Nombre Jugador</p>
                     <p class="card-text">Nombre Jugador</p>
                     <p class="card-text">Nombre Jugador</p>
